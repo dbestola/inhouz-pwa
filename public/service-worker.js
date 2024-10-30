@@ -79,7 +79,7 @@ if (workbox) {
     e.waitUntil(
       self.registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array('BH6FPd0tPpD7K0P3egqLFDUjAsVjKRHGpD1W50LHZ6KcplGGhewQUAFsfUb-ti15QVQ9QpzLzA7NxjJMxiuVr6g'),
+        applicationServerKey: urlBase64ToUint8Array('BKJiG98BQxyXTSCATcckYIu0hy__DonFuu1B5yJHgzVHzH7WfJON7eA2xzexIs5ih23F2PR5qfEYSNDCPQP1en0'),
       }).then((subscription) => {
         console.log('Successfully subscribed to push notifications:', subscription);
         return saveSubscription(subscription);
