@@ -1,10 +1,10 @@
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.0/8 are considered localhost for IPv4.
-    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
+  // [::1] is the IPv6 localhost address.
+  window.location.hostname === '[::1]' ||
+  // 127.0.0.0/8 are considered localhost for IPv4.
+  window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
 );
 
 export function register(config) {
@@ -12,29 +12,43 @@ export function register(config) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
     if (publicUrl.origin !== window.location.origin) {
- 
+
       return;
     }
 
-    window.addEventListener('load', () => {
-      const swUrl = `/service-worker.js`;
-      ;
+    return new Promise((resolve, reject) => {
+      window.addEventListener('load', () => {
+        const swUrl = `/service-worker.js`;
 
-      if (isLocalhost) {
-        // This is running on localhost. Let's check if a service worker still exists or not.
-        checkValidServiceWorker(swUrl, config);
-
-     
-        navigator.serviceWorker.ready.then(() => {
-          console.log(
-            'This web app is being served cache-first by a service ' +
-              'worker. To learn more, visit https://cra.link/PWA'
-          );
-        });
-      } else {
-        // Is not localhost. Just register service worker
-        registerValidSW(swUrl, config);
-      }
+       
+        navigator.serviceWorker.register(swUrl)
+          .then((registration) => {
+            registration.onupdatefound = () => {
+              const installingWorker = registration.installing;
+              if (installingWorker == null) {
+                return;
+              }
+              installingWorker.onstatechange = () => {
+                if (installingWorker.state === 'installed') {
+                  if (navigator.serviceWorker.controller) {
+                    if (config && config.onUpdate) {
+                      config.onUpdate(registration);
+                    }
+                  } else {
+                    if (config && config.onSuccess) {
+                      config.onSuccess(registration);
+                    }
+                  }
+                }
+              };
+            };
+            resolve(registration); // Ensure successful registration is resolved
+          })
+          .catch((error) => {
+            console.error('Service Worker registration failed:', error);
+            reject(error); // Reject if there's an error
+          });
+      });
     });
   }
 }
@@ -56,7 +70,7 @@ function registerValidSW(swUrl, config) {
               // content until all client tabs are closed.
               console.log(
                 'New content is available and will be used when all ' +
-                  'tabs for this page are closed. See https://cra.link/PWA.'
+                'tabs for this page are closed. See https://cra.link/PWA.'
               );
 
               // Execute callback
@@ -77,6 +91,7 @@ function registerValidSW(swUrl, config) {
           }
         };
       };
+      return registration; // <-- Return the registration object here
     })
     .catch((error) => {
       console.error('Error during service worker registration:', error);

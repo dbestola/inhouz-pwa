@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
+import Notification from './Notification.js';
 
 function Home() {
   const [showInstallButton, setShowInstallButton] = useState(false);
@@ -40,6 +41,7 @@ function Home() {
     <div className="home container">
       <header className="home-header">
         <h1>Welcome to Inhouz News</h1>
+
         <p>
           Get the latest news on technology, science, and more, in a sleek
           dark mode interface!
@@ -66,6 +68,8 @@ function Home() {
           </li>
         </ul>
       </section>
+
+      <Notification />
     </div>
   );
 }
