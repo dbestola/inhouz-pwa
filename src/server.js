@@ -60,6 +60,10 @@ export const renderApp = async (req, res) => {
       <link rel="manifest" href="/manifest.json" />
       <title>Welcome to Razzle</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="/css/App.css">
+      <link rel="stylesheet" href="/css/Article.css">
+      <link rel="stylesheet" href="/css/Home.css">
+      <link rel="stylesheet" href="/css/NetworkStatusBanner.css">
       ${cssLinksFromAssets(assets, "client")}
   </head>
   <body>

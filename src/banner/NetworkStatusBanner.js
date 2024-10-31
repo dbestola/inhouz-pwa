@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./NetworkStatusBanner.css"; // Import a CSS file to style the banner
 
 const NetworkStatusBanner = () => {
   const [isOnline, setIsOnline] = useState(navigator.onLine); // Initial network status

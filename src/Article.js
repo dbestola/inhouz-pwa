@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchArticle } from "./api";
-import "./Article.css";
 
 const Article = ({ initialData }) => {
   const [article, setArticle] = useState(
