@@ -32,3 +32,9 @@
   font-size: 1.1rem;
   color: #ff6347;
 }
+
+.img{
+  width: 100%;
+  object-fit: cover;
+  height: 180px;
+}

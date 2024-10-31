@@ -46,6 +46,8 @@ function Home() {
           Get the latest news on technology, science, and more, in a sleek
           dark mode interface!
         </p>
+        <br/>
+        <img className="img" src="https://avatars.githubusercontent.com/u/98102242?s=400&u=76287a857f0cab27010f3608ca2419d8514f402d&v=4" alt="image" />
       </header>
       
       {showInstallButton && (
