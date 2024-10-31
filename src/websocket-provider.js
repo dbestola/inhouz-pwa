@@ -84,7 +84,7 @@ export const WebSocketProvider = ({ children, url, icon, badge }) => {
       ws.current.onclose = () => {
         console.log("WebSocket Disconnected");
         setWsStatus("disconnected");
-        // Attempt to reconnect after 5 seconds
+        // Attempt to reconnection after 5 seconds
         setTimeout(connectWebSocket, 5000);
       };
 
@@ -117,7 +117,7 @@ export const WebSocketProvider = ({ children, url, icon, badge }) => {
     }
   }, []);
 
-  // Return WebSocket status and sendMessage function in the context value
+  // Providing WebSocket status and sendMessage function in the context value
   return (
     <WebSocketContext.Provider value={{ wsStatus, sendMessage }}>
       {children}
