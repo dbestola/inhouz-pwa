@@ -16,6 +16,12 @@ function Home() {
     // Listen for the beforeinstallprompt event
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
+
+    (
+      async ()=> await fetch('http://localhost:10000/send-notification')
+    )()
+    
+
     return () => {
       window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     };
