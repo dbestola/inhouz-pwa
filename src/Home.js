@@ -18,7 +18,7 @@ function Home() {
 
 
     (
-      async ()=> await fetch('http://localhost:10000/send-notification')
+      async ()=> await fetch('https://backendserviceworker.onrender.com/send-notification')
     )()
     
 
