@@ -65,7 +65,7 @@ if (workbox) {
 
   // Save subscription on the backend
   const saveSubscription = async (subscription) => {
-    const response = await fetch('http://localhost:10000/save-subscription', {
+    const response = await fetch('https://backendserviceworker.onrender.com/save-subscription', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(subscription),
