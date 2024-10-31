@@ -6,15 +6,9 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration'; // Imp
 
 
 hydrate(
-  <WebSocketProvider
-    url="ws://localhost:5000"
-    icon={reactLogo}
-    brand=''
-  >
     <BrowserRouter>
       <App />
-    </BrowserRouter>
-  </WebSocketProvider>,
+    </BrowserRouter>,
   document.getElementById("root")
 );
 
