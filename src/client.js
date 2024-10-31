@@ -6,10 +6,10 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration'; // Imp
 
 
 hydrate(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root')
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+  document.getElementById("root")
 );
 
 
