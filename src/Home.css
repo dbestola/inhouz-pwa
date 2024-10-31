@@ -38,3 +38,10 @@
   object-fit: cover;
   height: 180px;
 }
+.section-flex{
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}

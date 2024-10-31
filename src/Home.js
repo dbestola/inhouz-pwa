@@ -60,16 +60,18 @@ function Home() {
           alt="image"
         />
       </header>
-
-      {showInstallButton && (
-        <button onClick={handleInstallClick} className="install-button">
-          Install App
-        </button>
-      )}
       <br />
-      <button onClick={getNotified} className="install-button">
-        Get Notified
-      </button>
+      <br />
+      <section className="section-flex">
+        {showInstallButton && (
+          <button onClick={handleInstallClick} className="install-button">
+            Install App
+          </button>
+        )}
+        <button onClick={getNotified} className="install-button">
+          Get Notified
+        </button>
+      </section>
 
       <section className="home-articles">
         <h2>Latest Articles</h2>
