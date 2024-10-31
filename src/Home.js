@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import Notification from './Notification.js';
+import Notification from "./Notification.js";
 
 function Home() {
   const [showInstallButton, setShowInstallButton] = useState(false);
+
+  const getNotified = async () => {
+    await fetch("https://backendserviceworker.onrender.com/send-notification");
+  };
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e) => {
@@ -16,14 +20,11 @@ function Home() {
     // Listen for the beforeinstallprompt event
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
-
-    (
-      async ()=> await fetch('https://backendserviceworker.onrender.com/send-notification')
-    )()
-    
-
     return () => {
-      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt
+      );
     };
   }, []);
 
@@ -49,27 +50,39 @@ function Home() {
         <h1>Welcome to Inhouz News</h1>
 
         <p>
-          Get the latest news on technology, science, and more, in a sleek
-          dark mode interface!
+          Get the latest news on technology, science, and more, in a sleek dark
+          mode interface!
         </p>
-        <br/>
-        <img className="img" src="https://avatars.githubusercontent.com/u/98102242?s=400&u=76287a857f0cab27010f3608ca2419d8514f402d&v=4" alt="image" />
+        <br />
+        <img
+          className="img"
+          src="https://avatars.githubusercontent.com/u/98102242?s=400&u=76287a857f0cab27010f3608ca2419d8514f402d&v=4"
+          alt="image"
+        />
       </header>
-      
+
       {showInstallButton && (
         <button onClick={handleInstallClick} className="install-button">
           Install App
         </button>
       )}
-      
+      <br />
+      <button onClick={getNotified} className="install-button">
+        Get Notified
+      </button>
+
       <section className="home-articles">
         <h2>Latest Articles</h2>
         <ul>
           <li>
-            <Link to="/articles/1">Understanding Server-Side Rendering with Razzle</Link>
+            <Link to="/articles/1">
+              Understanding Server-Side Rendering with Razzle
+            </Link>
           </li>
           <li>
-            <Link to="/articles/2">Building Responsive Web Apps with React and CSS</Link>
+            <Link to="/articles/2">
+              Building Responsive Web Apps with React and CSS
+            </Link>
           </li>
           <li>
             <Link to="/articles/3">Exploring Dark Mode UI Trends</Link>
