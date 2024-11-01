@@ -32,9 +32,7 @@ const jsScriptTagsFromAssets = (assets, entrypoint, ...extra) => {
 // Updated renderApp function to preload data
 export const renderApp = async (req, res) => {
   const context = {};
-
-  console.log(process.env.RAZZLE_ASSETS_MANIFEST);
-  console.log(assets);
+  
   // Check if the URL matches the articles route
   const match = req.url.match(/\/articles\/(\d+)/);
   const articleId = match ? match[1] : null;
