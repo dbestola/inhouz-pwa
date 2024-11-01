@@ -33,6 +33,8 @@ const jsScriptTagsFromAssets = (assets, entrypoint, ...extra) => {
 export const renderApp = async (req, res) => {
   const context = {};
 
+  console.log(process.env.RAZZLE_ASSETS_MANIFEST);
+  console.log(assets);
   // Check if the URL matches the articles route
   const match = req.url.match(/\/articles\/(\d+)/);
   const articleId = match ? match[1] : null;
@@ -41,7 +43,7 @@ export const renderApp = async (req, res) => {
   // If the URL has an article ID, fetch article data
   if (articleId) {
     initialData = await fetchArticle(articleId);
-    console.log(initialData)
+    console.log(initialData);
   }
 
   // Render the app with the preloaded data
