@@ -13,8 +13,8 @@ const cssLinksFromAssets = (assets, entrypoint) => {
   return assets[entrypoint]
     ? assets[entrypoint].css
       ? assets[entrypoint].css
-          .map((asset) => `<link rel="stylesheet" href="${asset}">`)
-          .join("")
+        .map((asset) => `<link rel="stylesheet" href="${asset}">`)
+        .join("")
       : ""
     : "";
 };
@@ -23,8 +23,8 @@ const jsScriptTagsFromAssets = (assets, entrypoint, ...extra) => {
   return assets[entrypoint]
     ? assets[entrypoint].js
       ? assets[entrypoint].js
-          .map((asset) => `<script src="${asset}" ${extra.join(" ")}></script>`)
-          .join("")
+        .map((asset) => `<script src="${asset}" ${extra.join(" ")}></script>`)
+        .join("")
       : ""
     : "";
 };
@@ -32,7 +32,7 @@ const jsScriptTagsFromAssets = (assets, entrypoint, ...extra) => {
 // Updated renderApp function to preload data
 export const renderApp = async (req, res) => {
   const context = {};
-  
+
   // Check if the URL matches the articles route
   const match = req.url.match(/\/articles\/(\d+)/);
   const articleId = match ? match[1] : null;
@@ -55,6 +55,7 @@ export const renderApp = async (req, res) => {
   const html = `<!doctype html>
   <html lang="">
   <head>
+
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta charset="utf-8" />
       <link rel="manifest" href="/manifest.json" />
@@ -65,6 +66,14 @@ export const renderApp = async (req, res) => {
       <link rel="stylesheet" href="/css/Home.css">
       <link rel="stylesheet" href="/css/NetworkStatusBanner.css">
       ${cssLinksFromAssets(assets, "client")}
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta name="apple-mobile-web-app-title" content="Inhouz News">
+      <link rel="apple-touch-icon" sizes="180x180" href="/maskable.png">
+      <link rel="apple-touch-icon" sizes="192x192" href="/logo192.png">
+      <link rel="apple-touch-icon" sizes="512x512" href="/logo512.png">
+
+
   </head>
   <body>
       <div id="root">${markup}</div>
