@@ -6,7 +6,8 @@ import { renderToString } from "react-dom/server";
 import serialize from "serialize-javascript";
 import { fetchArticle } from "./api";
 
-const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
+const assets = require(process.env.RAZZLE_ASSETS_MANIFEST || './build/asset-manifest.json');
+
 
 // Helper functions for adding CSS and JS links
 const cssLinksFromAssets = (assets, entrypoint) => {
@@ -90,7 +91,7 @@ export const renderApp = async (req, res) => {
 const server = express();
 server
   .disable("x-powered-by")
-  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .use(express.static(process.env.RAZZLE_PUBLIC_DIR || path.join(__dirname, 'build/public')))
   .get("/*", async (req, res) => {
     const { context, html } = await renderApp(req, res);
     if (context.url) {
