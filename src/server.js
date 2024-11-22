@@ -5,8 +5,10 @@ import express from "express";
 import { renderToString } from "react-dom/server";
 import serialize from "serialize-javascript";
 import { fetchArticle } from "./api";
+import path from "path";
 
-const assets = require(process.env.RAZZLE_ASSETS_MANIFEST || './build/asset-manifest.json');
+const assets = require(process.env.RAZZLE_ASSETS_MANIFEST || './build/assets.json');
+
 
 
 // Helper functions for adding CSS and JS links
